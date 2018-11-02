@@ -6,7 +6,7 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
     can :read, Post
-    can :destroy, Post, user_id: user.id
+    can [:create,:destroy], Post, user_id: user.id
 
     #   if user.admin?
     #     can :manage, :all
