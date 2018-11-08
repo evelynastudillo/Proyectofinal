@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+before_action :authenticate_user!
+
   def index
   end
 
@@ -8,14 +10,16 @@ class CommentsController < ApplicationController
 
   def create
   @post = Post.find(params[:post_id])
-  @comment = @post.comment.new(comment_params)
+  @comment = Comment.new(comment_params)
+  @comment.user_id = current_user.id
+  @post.comments << @comment
   @comment.save!
 
-  def show
-    @comment = Comment.find(params[:id])
-  end
+  #def show
+  #  @comment = Comment.find(params[:id])
+  #end
   private def comment_params
-    params.require(:comment).permit(:content)
-  end
+    params.require(:comment).permit(:comment, :user_id)
+   end
   end
 end

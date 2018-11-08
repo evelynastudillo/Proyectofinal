@@ -1,10 +1,17 @@
-<%= form_with model: Comment.new do |f| %>
+
+<%= form_with model: Comment.new, url: [@post, Comment.new] do |f| %>
+
+
 <strong>
  <%= f.label :Comentarios %>
  </strong>
+
  <%= f.text_area :comment, class: 'form_with', required: true %>
  <%= f.submit :enviar %>
-<% end %>
+
+
 
 <div id="comm">
+
 </div>
+<% end %>
