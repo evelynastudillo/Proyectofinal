@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   #get 'comments/index'
   #get 'comments/create'
 
-  resources :posts
+  resources :posts do
   resources :comments
+end 
   devise_for :users
 
   root to: 'posts#index'
