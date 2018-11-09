@@ -19,8 +19,8 @@
 
 <p><%= render 'comments/comment' %></p>
 <% @comments.each do |comment| %>
-  <%= comment.comment %>
-  <% end %>
+<%= comment.comment %>
+<% end %>
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
