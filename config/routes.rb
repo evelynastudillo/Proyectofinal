@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   #get 'comments/index'
   #get 'comments/create'
 
-  resources :posts do
+resources :posts do
   resources :comments
 end
   devise_for :users
