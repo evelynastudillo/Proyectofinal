@@ -15,6 +15,8 @@ gem 'rails-erd', group: :development
 
 gem 'cancancan'
 
+gem 'geocoder'
+
 gem 'gmaps4rails'
 
 # Use postgresql as the database for Active Record
