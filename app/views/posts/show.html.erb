@@ -6,14 +6,40 @@
 </p>
 
 <p>
-  <strong>Photo:</strong>
-  <%= image_tag @post.photo %>
+  <strong>Foto:</strong>
+  <%= image_tag @post.photo.url %>
 </p>
 
 <p>
-  <strong>Location:</strong>
+  <strong>Dirección:</strong>
   <%= @post.location %>
 </p>
+
+
+<p>
+  <%= render 'comments/comment' %>
+</p>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+  <script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+   provider: {
+   center: new google.maps.LatLng({lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}),
+   zoom: 15
+   },
+   internal: {
+   id: 'map'
+   }
+   },
+   function(){
+   markers = handler.addMarkers(<%=raw @hash.to_json %>);
+   }
+  );
+  </script>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

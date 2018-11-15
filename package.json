@@ -1,5 +1,8 @@
 {
   "name": "galeria4",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "underscore": "^1.9.1"
+  }
 }

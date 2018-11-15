@@ -1,15 +1,26 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  #before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:destroy, :edit, :update, :create, :new]
+  load_and_authorize_resource
 
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+    @post = Post.new
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find(params[:id])
+    @comments = @post.comments.includes(:user)
+    @posts = Post.all
+    @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
+    marker.lat post.latitude
+    marker.lng post.longitude
+    end
+
   end
 
   # GET /posts/new
@@ -25,6 +36,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
