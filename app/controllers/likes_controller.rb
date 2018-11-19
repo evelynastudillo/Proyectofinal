@@ -1,31 +1,25 @@
 class LikesController < ApplicationController
-  before_action :find_post, only: [:destroy]
+  before_action :authenticate_user!
 
   def create
-    if already_liked?
-      flash[:notice] = "No dos veces!"
-    else
-    @post.likes.create(user_id: current_user.id)
+    @like = current_user.likes.build(like_params)
+    @post = @like.post
+    @like.save
   end
 
-def destroy
-  if !(already_liked?)
-    flash[:notice] = "No se puede eliminar"
-  else
-  @like.destroy
-  redirect_to root_path(@post)
-end
+  def destroy
+    @like = Like.find(params[:id])
+    @post = @like.post
+    redirect_to root_path(@post)
+  end
 
-def find_like
-  @like = @post.likes.find(params[:id])
-end
-
+  def find_like
+    @like = @post.likes.find(params[:id])
+  end
 
   private
-  def already_liked?
-    Like.where(user_id: current_user.id, post_id: params[:post_id]).exits?
+  def like_params
+    params.permit :post_id
   end
-  def find_post
-    @post = Post.find(params[:post_id])
-  end
-end 
+
+end
