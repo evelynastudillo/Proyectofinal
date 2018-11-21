@@ -13,9 +13,9 @@ class LikesController < ApplicationController
     redirect_to root_path(@post)
   end
 
-  def find_like
-    @like = @post.likes.find(params[:id])
-  end
+  #def find_like
+  #  @like = @post.likes.find(params[:id])
+  #end
 
   private
   def like_params

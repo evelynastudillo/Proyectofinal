@@ -2,13 +2,14 @@ class CommentsController < ApplicationController
   def index
   end
 
-  def new
-    @comment = Comment.new
-  end
+  #def new
+  #  @comment = Comment.new
+  #end
 
   def create
+
     @post = Post.find(params[:post_id])
-    @comment = @post.comment.new(comment_params)
+    @comment = @post.comments.create(params[:comment].permit(:comment))
     @comment.user = current_user
     @comment.save!
   end
