@@ -20,7 +20,6 @@ class PostsController < ApplicationController
     marker.lat post.latitude
     marker.lng post.longitude
     end
-
   end
 
   # GET /posts/new
