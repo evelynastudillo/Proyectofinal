@@ -39,4 +39,7 @@ ActiveAdmin.register User do
       super
     end
   end
+
+
+  filter :email, as: :select
 end

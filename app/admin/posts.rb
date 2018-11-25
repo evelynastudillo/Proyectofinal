@@ -20,8 +20,9 @@ ActiveAdmin.register Post do
     column :name do |post|
       post.user.email
     end
-    column :user_id
-    column :photo
+    column :photo #do |post|
+    #  image_tag post.photo.url
+    #end
     column :location
     column :comments do |post|
       post.comments.count
@@ -33,4 +34,6 @@ ActiveAdmin.register Post do
     column :update_at
     actions
   end
+
+  filter :created_at, as: :date_range
 end

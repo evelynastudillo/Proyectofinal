@@ -9,6 +9,33 @@ ActiveAdmin.register_page "Dashboard" do
         small I18n.t("active_admin.dashboard_welcome.call_to_action")
       end
     end
+    columns do
+      column do
+        panel "Últimos posts agregados" do
+          ul do
+            Post.last(20).map do |post|
+              li link_to(post.name, admin_post_path(post))
+            end
+          end
+        end
+      end
+      column do
+        panel "Usuarios" do
+          ul do
+            li "Usuarios registrados: #{User.count}"
+            li "Administradores registrados: #{AdminUser.count}"
+          end
+        end
+      end
+      column do
+        panel "Posts" do
+          ul do
+            li "Post creados: #{Post.count}"
+            li "Comentarios creados: #{Comment.count}"
+          end
+        end
+      end
+    end
 
     # Here is an example of a simple dashboard with columns and panels.
     #
