@@ -1,11 +1,13 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   def index
+    @comments = Comment.all
+    @comment = Comment.new
   end
 
-  #def new
-  #  @comment = Comment.new
-  #end
+  def new
+    @comment = Comment.new
+  end
 
   def create
     @post = Post.find(params[:post_id])
@@ -14,11 +16,17 @@ class CommentsController < ApplicationController
     @comment.save!
   end
 
+  def destroy
+    @comment.destroy
+  end
+  
+
   def show
     @comment = Comment.find(params[:id])
   end
 
-  private def comment_params
-    params.require(:comment).permit(:content)
-  end
+  private
+    def comment_params
+      params.require(:comment).permit(:content)
+    end
 end

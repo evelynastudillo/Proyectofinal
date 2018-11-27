@@ -17,12 +17,16 @@
 
 <p>
  <%= button_to 'Like', post_likes_path(post_id: @post.id, like:true ), method: :post %>
-
 </p>
+
+<div id="like">
+
+</div>
 <p>
      <%= @post.likes.count %> <%= (@post.likes.count) == 1? 'Like': 'Likes' %>
 </p>
   <%= render 'likes' %>
+<div id="comm"></div>
 
 <p>
   <%= render 'comments/comment' %>
