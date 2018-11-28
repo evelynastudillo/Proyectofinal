@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   def index
     @comments = Comment.all
-    @comment = Comment.new
   end
 
   def new
@@ -16,17 +15,19 @@ class CommentsController < ApplicationController
     @comment.save!
   end
 
-  def destroy
-    @comment.destroy
-  end
-  
-
   def show
     @comment = Comment.find(params[:id])
   end
 
-  private
-    def comment_params
-      params.require(:comment).permit(:content)
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    respond_to do |format|
+      format.js
     end
+  end
+
+  private def comment_params
+    params.require(:comment).permit(:content, :user_id)
+  end
 end

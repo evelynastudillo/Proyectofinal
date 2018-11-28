@@ -1,9 +1,7 @@
 <%= form_with model: Comment.new, url: [@post, Comment.new] do |f| %>
 <strong>
-  <%= f.label :Comentarios %>
+<%= f.label :Comentarios %>
 </strong>
 <%= f.text_area :comment, class: 'form_with', required: true %>
 <%= f.submit :enviar %>
 <% end %>
-
-<%= link_to 'Destroy', method: :delete, data: { remote: true, confirm: 'Are you sure?' } %>

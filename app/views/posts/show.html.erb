@@ -30,7 +30,16 @@
 
 <p>
   <%= render 'comments/comment' %>
+
 </p>
+
+<% @comments.each do |comment| %>
+<%= comment.comment %>
+<% if current_user.present? %>
+<%= link_to 'Borrar', post_comment_path(@post, comment), method: :delete,
+data: { remote: true, confirm: 'Are you sure?' } %>
+<% end %>
+<% end %>
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
