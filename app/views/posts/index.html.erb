@@ -4,11 +4,15 @@
 
 
   <tbody>
+
+
+
     <% @posts.each do |post| %>
 
     <div class="container">
+        <div align="center">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col">
           <div class="card-content">
             <div class="card-img">
               <%= image_tag post.photo.url %>
@@ -31,8 +35,10 @@
       </div>
     </div>
     <% end %>
+    </div>
   </tbody>
 </table>
+
 
 <br>
 

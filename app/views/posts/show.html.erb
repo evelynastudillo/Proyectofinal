@@ -1,3 +1,5 @@
+<div class="container">
+  
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -16,51 +18,52 @@
 </p>
 
 <p>
- <%= button_to 'Like', post_likes_path(post_id: @post.id, like:true ), method: :post %>
+  <%= button_to 'Like', post_likes_path(post_id: @post.id, like:true ), method: :post %>
 </p>
 
 <div id="like">
 
 </div>
 <p>
-     <%= @post.likes.count %> <%= (@post.likes.count) == 1? 'Like': 'Likes' %>
+  <%= @post.likes.count %> <%= (@post.likes.count) == 1? 'Like': 'Likes' %>
 </p>
-  <%= render 'likes' %>
-<div id="comm"></div>
+<%= render 'likes' %>
 
-<p>
+<div id="comm">
   <%= render 'comments/comment' %>
+</div>
 
-</p>
+<%= form_with model: Comment.new, url: [@post, Comment.new] do |f| %>
+<strong>
+<%= f.label :Comentarios %>
+</strong>
+<%= f.text_area :comment, class: 'form_with', required: true %>
+<%= f.submit :enviar %>
+<% end %>
 
-<% @comments.each do |comment| %>
-<%= comment.comment %>
-<% if current_user.present? %>
-<%= link_to 'Borrar', post_comment_path(@post, comment), method: :delete,
-data: { remote: true, confirm: 'Are you sure?' } %>
-<% end %>
-<% end %>
+
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 
-  <script>
-  handler = Gmaps.build('Google');
-  handler.buildMap({
-   provider: {
-   center: new google.maps.LatLng({lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}),
-   zoom: 15
-   },
-   internal: {
-   id: 'map'
-   }
-   },
-   function(){
-   markers = handler.addMarkers(<%=raw @hash.to_json %>);
-   }
-  );
-  </script>
+<script>
+handler = Gmaps.build('Google');
+handler.buildMap({
+  provider: {
+    center: new google.maps.LatLng({lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}),
+    zoom: 15
+  },
+  internal: {
+    id: 'map'
+  }
+},
+function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+});
+</script>
+
+</div>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

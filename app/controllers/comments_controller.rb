@@ -13,6 +13,9 @@ class CommentsController < ApplicationController
     @comment = @post.comments.create(params[:comment].permit(:comment))
     @comment.user_id = current_user.id
     @comment.save!
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show
