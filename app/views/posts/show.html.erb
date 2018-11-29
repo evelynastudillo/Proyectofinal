@@ -1,5 +1,5 @@
 <div class="container">
-  
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -30,7 +30,11 @@
 <%= render 'likes' %>
 
 <div id="comm">
-  <%= render 'comments/comment' %>
+  <ul>
+
+
+  <%= render @post.comments %>
+    </ul>
 </div>
 
 <%= form_with model: Comment.new, url: [@post, Comment.new] do |f| %>
