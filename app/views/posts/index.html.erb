@@ -1,37 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1>Street Art Scl madafakaaaaaaaaaaas!!!</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Photo</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
 
 
 
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.name %></td>
-        <td><%= image_tag post.photo.url %></td>
-        <td><%= link_to 'Ver', post %></td>
-        <td><%= link_to 'Editar', edit_post_path(post) %></td>
-        <td>
-          <% if can? :destroy, post %>
-            <%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-      </tr>
 
+    <div class="container">
+        <div align="center">
+      <div class="row">
+        <div class="col">
+          <div class="card-content">
+            <div class="card-img">
+              <%= image_tag post.photo.url %>
+              <%= link_to 'Ver', post %>
+              <%= link_to 'Editar', edit_post_path(post) %>
+              <% if can? :destroy, post %>
+              <%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+            </div>
+            <div class="card-desc">
+              <a href="#" class="btn-card">Read</a>
+              <span class="pull-right">
+                <a href="#" data-toggle="tooltip" data-placement="left" title="Comments"><i class="fa fa-comments" ></i> #</a>
+                <a href="#" data-toggle="tooltip" data-placement="right" title="Loved"><i class="fa fa-heart"></i> #</a>
+              </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <% end %>
-
+    </div>
   </tbody>
 </table>
+
 
 <br>
 

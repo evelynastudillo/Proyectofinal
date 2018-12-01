@@ -9,8 +9,6 @@ gem 'jquery-ui-rails', '~>4.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 
-
-
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 
 gem 'rails-erd', group: :development
@@ -21,7 +19,7 @@ gem 'geocoder'
 
 gem 'gmaps4rails'
 
-gem 'rails_12factor', group: :production  
+gem 'rails_12factor', group: :production
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
