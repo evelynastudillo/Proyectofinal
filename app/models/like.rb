@@ -1,5 +1,5 @@
 class Like < ApplicationRecord
-#validates_uniqueness_of :like
+#validates :like, uniqueness: true
   belongs_to :user
   belongs_to :post
 end

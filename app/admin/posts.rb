@@ -1,4 +1,11 @@
 ActiveAdmin.register Post do
+
+  controller do
+    def scoped_collection
+      end_of_association_chain.includes(:user)
+    end
+  end
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -25,7 +32,7 @@ ActiveAdmin.register Post do
     #end
     column :location
     column :comments do |post|
-      post.comments.count
+      post.comments.size
     end
     column :likes do |post|
       post.likes.count

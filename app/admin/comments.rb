@@ -3,6 +3,12 @@ ActiveAdmin.register Comment, as: 'PostComment' do
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # permit_params :list, :of, :attributes, :on, :model
+  controller do
+    def scoped_collection
+      end_of_association_chain.includes(:user)
+    end
+  end
+
   #
   # or
   #
@@ -25,5 +31,5 @@ ActiveAdmin.register Comment, as: 'PostComment' do
     actions
   end
   filter :created_at, as: :date_range
-  
+
 end
