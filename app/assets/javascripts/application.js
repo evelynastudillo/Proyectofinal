@@ -13,10 +13,10 @@
 //= require jquery/dist/jquery
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require underscore/underscore
-//= require gmaps/google
 //= require Chart.bundle
 //= require highcharts
 //= require chartkick
+//= require turbolinks
+//= require underscore/underscore
+//= require gmaps/google
 //= require_tree .
