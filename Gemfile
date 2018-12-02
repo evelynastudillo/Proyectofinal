@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'fog-aws'
+
 gem 'carrierwave'
 
 ruby '2.4.1'

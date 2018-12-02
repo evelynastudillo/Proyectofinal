@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   validates :location, presence: true
+  
 
 mount_uploader :photo, ImageUploader
 has_many :comments, dependent: :destroy, counter_cache: true
