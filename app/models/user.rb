@@ -7,6 +7,8 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable,
   :omniauthable, :omniauth_providers => [:facebook]
 
+
+
   has_many :comments
   has_many :posts
   has_many :likes, through: :posts, dependent: :destroy
@@ -18,5 +20,5 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name
     end
-  end  
+  end
 end

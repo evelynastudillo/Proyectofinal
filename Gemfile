@@ -7,11 +7,10 @@ gem 'carrierwave'
 
 ruby '2.4.1'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 
-
+gem 'mini_magick'
 
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 

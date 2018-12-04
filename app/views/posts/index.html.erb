@@ -15,7 +15,7 @@
         <div class="col">
           <div class="card-content">
             <div class="card-img">
-              <%= image_tag post.photo.url %>
+              <%= image_tag post.photo_url %>
               <%= link_to 'Ver', post %>
               <%= link_to 'Editar', edit_post_path(post) %>
               <% if can? :destroy, post %>
