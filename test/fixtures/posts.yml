@@ -4,8 +4,10 @@ one:
   name: MyString
   photo: MyString
   location: MyString
+  user:  one
 
 two:
   name: MyString
   photo: MyString
   location: MyString
+  user:  two

@@ -1,70 +1,75 @@
 <div class="container">
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
+  <p id="alert"><%= alert %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @post.name %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @post.name %>
+  </p>
 
-<p>
-  <strong>Foto:</strong>
-  <%= image_tag @post.photo.url %>
-</p>
+  <p>
+    <strong>Foto:</strong>
+    <%= image_tag @post.photo.url %>
+  </p>
 
-<p>
-  <strong>Dirección:</strong>
-  <%= @post.location %>
-</p>
+  <p>
+    <strong>Dirección:</strong>
+    <%= @post.location %>
+  </p>
 
-<p>
-  <%= button_to 'Like', post_likes_path(post_id: @post.id, like:true ), method: :post %>
-</p>
+  <div id="like">
+    <p>
+      <%= button_to 'Like', post_likes_path(post_id: @post.id, like:true ), method: :post %>
+    </p>
 
-<div id="like">
-
-</div>
-<p>
-  <%= @post.likes.count %> <%= (@post.likes.count) == 1? 'Like': 'Likes' %>
-</p>
-<%= render 'likes' %>
-
-<div id="comm">
-  <ul>
+    <a href="#" data-toggle="tooltip" data-placement="right" title="Loved"><i class="fa fa-heart"></i> <%= @post.likes.count %> <%= (@post.likes.count) == 1? 'Like': 'Likes' %> </a>
 
 
-  <%= render @post.comments %>
+
+    <p>
+      <%= @post.likes.count %> <%= (@post.likes.count) == 1? 'Like': 'Likes' %>
+    </p>
+    <%= render 'likes' %>
+
+  </div>
+
+  <div id="comm">
+    <ul>
+
+
+      <%= render @post.comments %>
     </ul>
-</div>
+  </div>
 
-<%= form_with model: Comment.new, url: [@post, Comment.new] do |f| %>
-<strong>
-<%= f.label :Comentarios %>
-</strong>
-<%= f.text_area :comment, class: 'form_with', required: true %>
-<%= f.submit :enviar %>
-<% end %>
+  <%= form_with model: Comment.new, url: [@post, Comment.new] do |f| %>
+  <strong>
+    <%= f.label :Comentarios %>
+  </strong>
+  <%= f.text_area :comment, class: 'form_with', required: true %>
+  <%= f.submit :enviar %>
+  <% end %>
 
 
 
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
-</div>
+  <div style='width: 800px;'>
+    <div id="map" style='width: 800px; height: 400px;'></div>
+  </div>
 
-<script>
-handler = Gmaps.build('Google');
-handler.buildMap({
-  provider: {
-    center: new google.maps.LatLng({lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}),
-    zoom: 15
+  <script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+    provider: {
+      center: new google.maps.LatLng({lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}),
+      zoom: 15
+    },
+    internal: {
+      id: 'map'
+    }
   },
-  internal: {
-    id: 'map'
-  }
-},
-function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-});
+  function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  });
 </script>
 
 </div>
