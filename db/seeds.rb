@@ -5,4 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+AdminUser.destroy_all
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+User.destroy_all
+Comment.destroy_all
+Post.destroy_all
+
+
+5.times do |i|
+  User.create!(
+    name: Faker::BreakingBad.character,
+    email: "usuario#{i}@gmail.com",
+    password: "123456"
+  )
+end
+users = User.all.pluck(:id)

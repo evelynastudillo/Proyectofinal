@@ -13,6 +13,8 @@ gem 'rails', '~> 5.2.1'
 
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 
+gem 'faker'
+
 gem 'rails-erd', group: :development
 
 gem 'cancancan'
