@@ -9,9 +9,10 @@
 AdminUser.destroy_all
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-User.destroy_all
+
 Comment.destroy_all
 Post.destroy_all
+User.destroy_all
 
 
 5.times do |i|
@@ -22,3 +23,13 @@ Post.destroy_all
   )
 end
 users = User.all.pluck(:id)
+
+5.times do |i|
+  Post.create!(
+    user_id: users.sample,
+    name: Faker::Beer.name,
+    photo: "http://placekitten.com/200/300",
+    location: Faker::Address.full_address
+  )
+  sleep 1
+end
