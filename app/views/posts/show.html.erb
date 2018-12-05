@@ -58,17 +58,10 @@
 
   <script>
   handler = Gmaps.build('Google');
-  handler.buildMap({
-    provider: {
-      center: new google.maps.LatLng({lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}),
-      zoom: 15
-    },
-    internal: {
-      id: 'map'
-    }
-  },
-  function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+     markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
   });
 </script>
 
