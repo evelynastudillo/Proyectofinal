@@ -1,13 +1,5 @@
 
-.jumbotron {
-  /* background-image: url("head.jpg"); */
-  background-color: lightgrey;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 300px;
-
-}
+.
 
 .footer{
   background-color: #343a40;
@@ -16,5 +8,3 @@
 
 .comentario {
   width: 800px;
-
-}
