@@ -1,13 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Street Art Scl madafakaaaaaaaaaaas!!!</h1>
+<%= render 'layouts/header' %>
+<br>
+<br>
+  <tbody>
+
+    <%= link_to 'Nuevo Post', new_post_path, :class => 'btn btn-dark' %>
 
 
-  <tbody>  
+    <br>
+    <br>
+
+    <div class="container-fluid dos">
+      <% @posts.each do |post| %>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>
+                        <span class="align-middle">
+                      <%= link_to 'Ver', post, :class => 'btn btn-outline-danger' %></span>
+                      <%= link_to 'Editar', edit_post_path(post), :class => 'btn btn-outline-danger' %>
+                      <% if can? :destroy, post %>
+                      <%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-outline-danger' %>
+
+                      <% end %>
+
+                    </p>
+                    <div class="dato likes">
+                      <i class="fa fa-heart"></i><%= @post.likes.count %>
+                    </div>
+            </div>
+                <div class="col-md-6">
+                    <%= image_tag post.photo_url %>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <%= image_tag post.photo_url %>
+                </div>
+                <div class="col-md-6">
+
+                    <p>
+                      <%= link_to 'Ver', post %>
+                    </p>
+                </div>
+            </div>
+  <% end %>
+        </div>
+
+  </tbody>  
 
 
 
-    <% @posts.each do |post| %>
+
+    <!-- <% @posts.each do |post| %>
 
     <div class="container">
         <div align="center">
