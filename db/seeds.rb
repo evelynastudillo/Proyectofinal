@@ -28,8 +28,18 @@ users = User.all.pluck(:id)
   Post.create!(
     user_id: users.sample,
     name: Faker::Beer.name,
-    photo: "http://placekitten.com/200/300",
+    photo: open("http://www.freshpaintart.com/application/files/full/15392.jpg"),
     location: Faker::Address.full_address
   )
   sleep 1
+end
+
+posts = Post.all.pluck(:id)
+
+10.times do
+  Comment.create!(
+    post_id: posts.sample,
+    user_id: users.sample,
+    comment: Faker::Lorem.paragraph
+  )
 end
