@@ -28,7 +28,7 @@ users = User.all.pluck(:id)
   Post.create!(
     user_id: users.sample,
     name: Faker::Beer.name,
-    photo: open("http://www.freshpaintart.com/application/files/full/15392.jpg"),
+    photo: open("https://strawberrytours.com/images/LondonStreetArtTour/Highlights/Zabou.jpg"),
     location: Faker::Address.full_address
   )
   sleep 1
