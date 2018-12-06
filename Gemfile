@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-#gem 'fog-aws'
+gem 'fog-aws'
 
 gem 'carrierwave'
 
@@ -27,6 +27,8 @@ gem 'gmaps4rails'
 gem 'omniauth-facebook'
 
 gem 'activeadmin'
+
+
 
 gem 'bullet', group: 'development'
 
