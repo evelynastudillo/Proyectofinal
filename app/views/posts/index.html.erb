@@ -1,13 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Street Art Scl madafakaaaaaaaaaaas!!!</h1>
-
 
   <tbody>
+    <%= link_to 'New Post', new_post_path %>
+    <br>
+    <br>
+
+    <div class="container-fluid dos">
+      <% @posts.each do |post| %>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>
+                      <%= link_to 'Ver', post %>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <%= image_tag post.photo_url %>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <%= image_tag post.photo_url %>
+                </div>
+                <div class="col-md-6">
+
+                    <p>
+                      <%= link_to 'Ver', post %>
+                    </p>
+                </div>
+            </div>
+  <% end %>
+        </div>
 
 
 
-    <% @posts.each do |post| %>
+    <!-- <% @posts.each do |post| %>
 
     <div class="container">
         <div align="center">
@@ -38,8 +66,3 @@
     </div>
   </tbody>
 </table>
-
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>

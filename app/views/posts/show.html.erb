@@ -57,21 +57,17 @@
   </div>
 
   <script>
-  handler = Gmaps.build('Google');
-  handler.buildMap({
-    provider: {
-      center: new google.maps.LatLng({lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}),
-      zoom: 15
-    },
-    internal: {
-      id: 'map'
-    }
-  },
-  function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  });
-</script>
 
+  </script>
+</div>
+
+<div class="card mb-3">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
 </div>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
