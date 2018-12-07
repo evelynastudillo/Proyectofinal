@@ -11,7 +11,7 @@ elsif  Rails.env.development?
     config.fog_credentials = {
       provider: 'AWS', # required
       aws_access_key_id: ENV['AWS_KEY_CARRIERWAVE'], # required
-      aws_secret_access_key: ENV['AWS_SECRET_CARRIERWAVE'] # required
+      aws_secret_access_key: ENV['AWS_SECRET_CARRIERWAVE'], # required
       #region: 'eu-west-1', # optional, defaults to 'us-east-1'
       #host: 's3.example.com', # optional, defaults to nil
       #endpoint: 'https://s3.example.com:8080' # optional, defaults to nil
@@ -24,7 +24,7 @@ elsif  Rails.env.development?
 elsif Rails.env.production?
 
   CarrierWave.configure do |config|
-    config.fog_provider = 'carrierwave/storage/fog' # required
+    config.fog_provider = 'fog/aws' # required
     config.fog_credentials = {
       provider: 'AWS', # required
       aws_access_key_id: ENV['AWS_KEY_CARRIERWAVE'], # required
