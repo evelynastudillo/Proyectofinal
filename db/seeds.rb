@@ -29,7 +29,9 @@ users = User.all.pluck(:id)
     user_id: users.sample,
     name: Faker::Beer.name,
     photo: open("https://strawberrytours.com/images/LondonStreetArtTour/Highlights/Zabou.jpg"),
-    location: Faker::Address.full_address
+    location: Faker::Address.full_address,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude,
   )
   sleep 1
 end
