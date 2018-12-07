@@ -28,17 +28,11 @@
     </div>
     <%= render 'likes' %>
   </div>
+  <hr>
 
   <div id="comm">
-    <ul>
-      <%= render @post.comments %>
-    </ul>
-  </div>
 
-
-
-
-
+     <h5>*Para comentar debes estar registrado</h5>
   <%= form_with model: Comment.new, url: [@post, Comment.new] do |f| %>
   <strong>
     <%= f.label :Comentarios %>
@@ -46,6 +40,12 @@
   <%= f.text_area :comment, class: 'form_with', required: true %>
   <%= f.submit :enviar %>
   <% end %>
+<hr>
+  <ul>
+    <%= render @post.comments %>
+  </ul>
+</div>
+
 
 
 
@@ -59,6 +59,4 @@
 
 </div>
 
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', posts_path, :class => 'btn btn-outline-success' %>

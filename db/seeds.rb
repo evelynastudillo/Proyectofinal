@@ -5,4 +5,42 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+AdminUser.destroy_all
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+
+Comment.destroy_all
+Post.destroy_all
+User.destroy_all
+
+
+5.times do |i|
+  User.create!(
+    name: Faker::BreakingBad.character,
+    email: "usuario#{i}@gmail.com",
+    password: "123456"
+  )
+end
+users = User.all.pluck(:id)
+
+5.times do |i|
+  Post.create!(
+    user_id: users.sample,
+    name: Faker::Beer.name,
+    photo: open("https://strawberrytours.com/images/LondonStreetArtTour/Highlights/Zabou.jpg"),
+    location: Faker::Address.full_address,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude,
+  )
+  sleep 1
+end
+
+posts = Post.all.pluck(:id)
+
+10.times do
+  Comment.create!(
+    post_id: posts.sample,
+    user_id: users.sample,
+    comment: Faker::Lorem.paragraph
+  )
+end

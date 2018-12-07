@@ -30,6 +30,8 @@ gem 'chartkick'
 
 gem 'groupdate'
 
+gem 'faker'
+
 gem 'bullet', group: 'development'
 
 # Use postgresql as the database for Active Record
