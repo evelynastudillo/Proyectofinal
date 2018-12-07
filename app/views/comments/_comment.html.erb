@@ -1,8 +1,8 @@
 <li id="comms.id">
-  <%= comment.comment %>
+  <p><%= comment.comment %></p>
   <% if current_user.present? %>
   <%= link_to 'Borrar', post_comment_path(@post, comment), method: :delete,
   data: { remote: true, confirm: 'Are you sure?' } %>
   <% end %>
-  
+
 </li>
