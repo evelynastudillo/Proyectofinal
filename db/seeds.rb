@@ -27,7 +27,7 @@ users = User.all.pluck(:id)
   Post.create!(
     user_id: users.sample,
     name: Faker::Beer.name,
-    photo: open("https://strawberrytours.com/images/LondonStreetArtTour/Highlights/Zabou.jpg"),
+    photo: open("https://cdn.singulart.com/artworks/pictures/cropped/1973/4299/carousel/serie_4299_252f1c83d553354b81d5a0c96bc5f824.jpeg"),
     location: Faker::Address.full_address,
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,

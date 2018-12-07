@@ -1,0 +1,3 @@
+<% if current_user.present?  %>
+  <%= button_to 'I Like', post_likes_path(post_id: @post.id, like:true ), method: :post   %>
+<% end %>

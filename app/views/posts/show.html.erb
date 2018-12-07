@@ -20,10 +20,7 @@
   </p>
 
   <div id="like">
-    <p>
-      <%= button_to 'Like', post_likes_path(post_id: @post.id, like:true ), method: :post   %>
-
-    </p>
+      <%= button_to 'I Like', post_likes_path(post_id: @post.id, like:true ), method: :post   %>
     <div>
       <i class="fa fa-heart"></i><%= @post.likes.count %>
     </div>
@@ -35,15 +32,18 @@
 
   <div id="comm">
 
-     <h5>*Para comentar debes estar registrado</h5>
+
   <%= form_with model: Comment.new, url: [@post, Comment.new] do |f| %>
   <strong>
     <%= f.label :Comenta %>
   </strong>
+    <h5>*Para comentar debes estar registrado</h5>
+
   <%= f.text_area :comment, class: 'form_with', required: true %>
   <%= f.submit :enviar %>
   <% end %>
 <hr>
+<h4>Comentarios</h4>
   <ul>
     <%= render @post.comments %>
   </ul>

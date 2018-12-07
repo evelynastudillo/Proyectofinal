@@ -29,13 +29,21 @@
         <% end %>
       </div>
     </div>
-    <div >
-      <i class="fa fa-heart"></i><%= @post.likes.count %>
+    <div id="like">
+      <div>
+        <i class="fa fa-heart"></i><%= @post.likes.count %>
+      </div>
+      <%= render 'likes' %>
     </div>
     <hr>
     <% end %>
   </div>
 
+  <br>
+
   <%= link_to 'Crear nuevo Post', new_post_path, :class => 'btn btn-outline-success' %>
 
+
+
 </tbody>
+<hr>
