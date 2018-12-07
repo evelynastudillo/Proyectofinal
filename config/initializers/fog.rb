@@ -1,10 +1,12 @@
 if Rails.env.test?
   CarrierWave.configure do |config|
-    config.fog_credentials = 'fog/aws'
+    config.fog_credentials = 'carrierwave/storage/fog'
     config.enable_processing = false
   end
 
 elsif  Rails.env.development?
+
+
 
   CarrierWave.configure do |config|
     config.fog_provider = 'fog/aws' # required
