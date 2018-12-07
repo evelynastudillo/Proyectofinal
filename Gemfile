@@ -30,6 +30,8 @@ gem 'activeadmin'
 
 
 
+gem 'faker'
+
 gem 'bullet', group: 'development'
 
 gem 'rails_12factor', group: :production

@@ -5,44 +5,37 @@
 <br>
 <tbody>
 
-  <%= link_to 'Nuevo Post', new_post_path, :class => 'btn btn-dark' %>
 
 
   <br>
   <br>
 
-  <div class="container-fluid dos">
+  <div class="container">
     <% @posts.each do |post| %>
-      <div class="col-md-6">
+    <div class="row">
+      <div class="col-8">
         <%= image_tag post.photo_url %>
       </div>
 
-      <div class="row">
-        <div class="col-md-6">
-
-            <span class="align-middle">
-              <%= link_to 'Ver', post, :class => 'btn btn-outline-danger' %></span>
-              <%= link_to 'Editar', edit_post_path(post), :class => 'btn btn-outline-danger' %>
-              <% if can? :destroy, post %>
-              <%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-outline-danger' %>
-
-              <% end %>
-            <div class="likes">
-              <i class="fa fa-heart"></i><%= @post.likes.count %>
-            </div>
-          </div>
-        </div>
-
-
+      <div class="col">
+        <p id="parraf">
+          <%= link_to 'Ver más detalles', post, :class => 'btn btn-outline-success' %>
+          <% if can? :edit, post %>
+          <%= link_to 'Editar', edit_post_path(post), :class => 'btn btn-outline-danger' %>
+          <% if can? :destroy, post %>
+          <%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-outline-danger' %>
+        </p>
+        <% end %>
         <% end %>
       </div>
+    </div>
+    <div >
+      <i class="fa fa-heart"></i><%= @post.likes.count %>
+    </div>
+    <hr>
+    <% end %>
+  </div>
 
+  <%= link_to 'Crear nuevo Post', new_post_path, :class => 'btn btn-outline-success' %>
 
-  </tbody>
-
-
-
-  <br>
-
-
-  <%= link_to 'New Post', new_post_path %>
+</tbody>

@@ -318,6 +318,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise!
   faker
+  fog-aws
   geocoder
   gmaps4rails
   jbuilder (~> 2.5)
