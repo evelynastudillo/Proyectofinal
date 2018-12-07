@@ -3,83 +3,39 @@
 <%= render 'layouts/header' %>
 <br>
 <br>
-  <tbody>
+<tbody>
 
-    <%= link_to 'Nuevo Post', new_post_path, :class => 'btn btn-dark' %>
-
-
-    <br>
-    <br>
-
-    <div class="container-fluid dos">
-      <% @posts.each do |post| %>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>
-                        <span class="align-middle">
-                      <%= link_to 'Ver', post, :class => 'btn btn-outline-danger' %></span>
-                      <%= link_to 'Editar', edit_post_path(post), :class => 'btn btn-outline-danger' %>
-                      <% if can? :destroy, post %>
-                      <%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-outline-danger' %>
-
-                      <% end %>
-
-                    </p>
-                    <div class="dato likes">
-                      <i class="fa fa-heart"></i><%= @post.likes.count %>
-                    </div>
-            </div>
-                <div class="col-md-6">
-                    <%= image_tag post.photo_url %>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <%= image_tag post.photo_url %>
-                </div>
-                <div class="col-md-6">
-
-                    <p>
-                      <%= link_to 'Ver', post %>
-                    </p>
-                </div>
-            </div>
-  <% end %>
-        </div>
+  <%= link_to 'Nuevo Post', new_post_path, :class => 'btn btn-dark' %>
 
 
+  <br>
+  <br>
 
+  <div class="container">
+    <% @posts.each do |post| %>
+    <div class="row">
+      <div class="col-8">
+        <%= image_tag post.photo_url %>
+      </div>
 
+      <div class="col">
+        <p id="parraf">
+          <%= link_to 'Ver', post, :class => 'btn btn-outline-danger' %>
+          <% if can? :edit, post %>
+          <%= link_to 'Editar', edit_post_path(post), :class => 'btn btn-outline-danger' %>
+          <% if can? :destroy, post %>
+          <%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-outline-danger' %>
+        </p>
+        <% end %>
 
-    <!-- <% @posts.each do |post| %>
-
-    <div class="container">
-        <div align="center">
-      <div class="row">
-        <div class="col">
-          <div class="card-content">
-            <div class="card-img">
-              <%= image_tag post.photo_url %>
-              <%= link_to 'Ver', post %>
-              <%= link_to 'Editar', edit_post_path(post) %>
-              <% if can? :destroy, post %>
-              <%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <% end %>
-            </div>
-            <div class="card-desc">
-              <a href="#" class="btn-card">Read</a>
-              <span class="pull-right">
-                <a href="#" data-toggle="tooltip" data-placement="left" title="Comments"><i class="fa fa-comments" ></i> #</a>
-                <a href="#" data-toggle="tooltip" data-placement="right" title="Loved"><i class="fa fa-heart"></i> #</a>
-              </span>
-
-            </div>
-          </div>
+        <% end %>
+        <div>
+        <i class="fa fa-heart"></i><%= @post.likes.count %>
         </div>
       </div>
+
     </div>
+    <hr>
     <% end %>
-    </div>
-  </tbody>
-</table>
+  </div>
+</tbody>
