@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @comments = @post.comments.includes(:user)
     @posts = Post.all
     @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
-    
+
       marker.lat post.latitude
       marker.lng post.longitude
     end
@@ -66,6 +66,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }

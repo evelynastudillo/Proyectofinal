@@ -1,5 +1,5 @@
 class Like < ApplicationRecord
-validates :user, uniqueness: { scope: :post}
+validates :user, uniqueness: true
   belongs_to :user
   belongs_to :post
 end

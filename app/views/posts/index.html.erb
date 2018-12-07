@@ -20,13 +20,12 @@
       <div class="col">
         <p id="parraf">
           <%= link_to 'Ver más detalles', post, :class => 'btn btn-outline-success' %>
-          <% if can? :edit, post %>
-          <%= link_to 'Editar', edit_post_path(post), :class => 'btn btn-outline-danger' %>
+
           <% if can? :destroy, post %>
           <%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-outline-danger' %>
         </p>
         <% end %>
-        <% end %>
+  
       </div>
     </div>
     <!-- <div id="like">
