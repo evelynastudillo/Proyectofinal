@@ -1,4 +1,4 @@
-if Rails.env.test?
+if Rails.env.test
   CarrierWave.configure do |config|
     config.fog_provider = 'fog/aws'
     config.enable_processing = false
